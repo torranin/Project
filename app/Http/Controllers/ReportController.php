@@ -16,7 +16,7 @@ class ReportController extends Controller
         $start = $year."-".$mouth."-".'01';
         $end = $year."-".$mouth."-".'30';
         $mainmenu = "report";
-        $data = Group::join('do_actives', 'groups.id', '=', 'do_actives.groupId')->whereBetween('do_actives.created_at', [$start,$end])->orderBy('do_actives.created_at', 'desc')->get();
+        $data = Group::join('do_actives', 'groups.id', '=', 'do_actives.groupId')->whereBetween('do_actives.date', [$start,$end])->orderBy('do_actives.date', 'desc')->get();
 
         return view('report')->with(array('data' => $data, 'mainmenu' => $mainmenu));
     }
